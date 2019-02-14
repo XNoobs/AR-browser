@@ -19,6 +19,34 @@ namespace NTI.Scripts
         private float movement_z = 0;
         private readonly Color _activeCellColor = Color.red;
         private List<List<GameObject>> _grid = new List<List<GameObject>>();
+        private GameObject menuBtn;
+
+        
+        private void DrawMenuButton(bool UIOn)
+        {
+            var padding = 0f;
+            if (UIOn)
+            {
+                padding = -28;
+            }
+            else
+            {
+                padding = -(width / 2 + 1) * squareSize;
+
+            }
+            square.transform.localScale = new Vector3(5, 5, 0);
+            _position = new Vector3(0, 0, padding);
+            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn.SetActive(true);
+            menuBtn.transform.SetParent(this.transform);
+            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
+            menuBtnBoxCollider.name = "menu";
+        }
+
+        private void DeleteMenuButton()
+        {
+            Destroy(menuBtn);
+        }
 
         private void DrawGrid()
         {
@@ -86,14 +114,8 @@ namespace NTI.Scripts
 
         private void Start()
         {
-            userInterface.enabled = false;
-            DrawGrid();
-            _position = new Vector3(0, 0, -1 * (width / 2 + 1) * squareSize);
-            var menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
-            menuBtn.SetActive(true);
-            menuBtn.transform.SetParent(this.transform);
-            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
-            menuBtnBoxCollider.name = "menu";
+            userInterface.enabled = true;
+            DrawMenuButton(true);
         }
 
         private void Update()
@@ -110,13 +132,17 @@ namespace NTI.Scripts
                         if (_grid.Count != 0)
                         {
                             DeleteGrid();
+                            DeleteMenuButton();
                             userInterface.enabled = true;
+                            DrawMenuButton(true);
 
                         }
                         else
                         {
                             userInterface.enabled = false;
+                            DeleteMenuButton();
                             DrawGrid();
+                            DrawMenuButton(false);
 
                         }
                     }
