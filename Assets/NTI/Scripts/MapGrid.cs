@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System;
+using UnityEngine.Internal.Experimental.UIElements;
 using UnityEngine.UI;
 
 namespace NTI.Scripts
@@ -18,8 +19,35 @@ namespace NTI.Scripts
         private float movement_x = 0;
         private float movement_z = 0;
         private readonly Color _activeCellColor = Color.red;
+        private GameObject menuBtn;
         private List<List<GameObject>> _grid = new List<List<GameObject>>();
 
+       /* private void DrawMenuButton(bool UIOn)
+        {
+            var padding = 0f;
+            if (UIOn)
+            {
+                var canvasBox = userInterface.GetComponent<Renderer>().bounds;
+                padding = -(canvasBox.size.z/2+1)*squareSize;
+            }
+            else
+            {
+                padding = -(width / 2 + 1) * squareSize;
+
+            }
+
+            _position = new Vector3(0, 0, padding);
+            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn.SetActive(true);
+            menuBtn.transform.SetParent(this.transform);
+            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
+            menuBtnBoxCollider.name = "menu";
+        }
+
+        private void DeleteMenuButton()
+        {
+            Destroy(menuBtn);
+        }*/
         private void DrawGrid()
         {
             var inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
@@ -88,12 +116,7 @@ namespace NTI.Scripts
         {
             userInterface.enabled = false;
             DrawGrid();
-            _position = new Vector3(0, 0, -1 * (width / 2 + 1) * squareSize);
-            var menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
-            menuBtn.SetActive(true);
-            menuBtn.transform.SetParent(this.transform);
-            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
-            menuBtnBoxCollider.name = "menu";
+           // DrawMenuButton(false);
         }
 
         private void Update()
@@ -111,12 +134,14 @@ namespace NTI.Scripts
                         {
                             DeleteGrid();
                             userInterface.enabled = true;
+                            //DrawMenuButton(true);
 
                         }
                         else
                         {
                             userInterface.enabled = false;
                             DrawGrid();
+                            //DrawMenuButton(false);
 
                         }
                     }
