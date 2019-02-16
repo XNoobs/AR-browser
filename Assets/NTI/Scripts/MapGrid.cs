@@ -12,16 +12,25 @@ namespace NTI.Scripts
         [SerializeField] private uint squareSize = 7;
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
-        private Vector3 _position;
         private uint height = 10;
         private uint width = 10;
         private float movement_x = 0;
         private float movement_z = 0;
         private readonly Color _activeCellColor = Color.red;
-        private List<List<GameObject>> _grid = new List<List<GameObject>>();
+        private GameObject[,] _grid;
         private GameObject menuBtn;
 
-        
+
+        private void CreateMenuButton()
+        {
+            square.transform.localScale = new Vector3(5, 5, 0);
+            var position = new Vector3(0,0,0);
+            menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn.transform.SetParent(this.transform);
+            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
+            menuBtnBoxCollider.name = "menu";
+            
+        }
         private void DrawMenuButton(bool UIOn)
         {
             var padding = 0f;
@@ -34,18 +43,10 @@ namespace NTI.Scripts
                 padding = -(width / 2 + 1) * squareSize;
 
             }
-            square.transform.localScale = new Vector3(5, 5, 0);
-            _position = new Vector3(0, 0, padding);
-            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            
+             var position = new Vector3(0, 0, padding);
+            menuBtn.transform.position = position;
             menuBtn.SetActive(true);
-            menuBtn.transform.SetParent(this.transform);
-            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
-            menuBtnBoxCollider.name = "menu";
-        }
-
-        private void DeleteMenuButton()
-        {
-            Destroy(menuBtn);
         }
 
         private void DrawGrid()
@@ -54,7 +55,8 @@ namespace NTI.Scripts
             var inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
             UInt32.TryParse(inputHeight.text, out height);
             UInt32.TryParse(inputWidth.text, out width);
-
+            
+            _grid = new GameObject[height,width];
             if (height % 2 == 0)
             {
                 movement_x = Convert.ToSingle((height / 2 - 0.5) * squareSize);
@@ -75,10 +77,6 @@ namespace NTI.Scripts
 
 
             square.transform.localScale = new Vector3(5, 5, 0);
-            for (var i = 0; i < height; i++)
-            {
-                _grid.Add(new List<GameObject>());
-            }
 
             for (var i = 0; i < height; i++)
             {
@@ -86,13 +84,13 @@ namespace NTI.Scripts
                 for (var j = 0; j < width; j++)
                 {
 
-                    _position = new Vector3(i * squareSize - movement_x, 0, j * squareSize - movement_z);
-                    var current = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+                    var position = new Vector3(i * squareSize - movement_x, 0, j * squareSize - movement_z);
+                    var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
                     current.SetActive(true);
                     current.transform.SetParent(this.transform);
                     var currentBoxCollider = current.AddComponent<BoxCollider>();
                     currentBoxCollider.name = i.ToString() + '_' + j.ToString();
-                    _grid[i].Add(current);
+                    _grid[i, j] = current;
                 }
             }
 
@@ -104,18 +102,18 @@ namespace NTI.Scripts
             {
                 for (var j = 0; j < width; j++)
                 {
-                    Destroy(_grid[i][j]);
+                    Destroy(_grid[i,j]);
                 }
             }
-
-            _grid = new List<List<GameObject>>();
         }
 
 
         private void Start()
         {
             userInterface.enabled = true;
+            CreateMenuButton();
             DrawMenuButton(true);
+            
         }
 
         private void Update()
@@ -123,16 +121,16 @@ namespace NTI.Scripts
 
             if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                Ray raycastMenu = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                var raycastMenu = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                 RaycastHit raycastHitMenu;
                 if (Physics.Raycast(raycastMenu, out raycastHitMenu))
                 {
+                    
                     if (raycastHitMenu.collider.name == "menu")
                     {
-                        if (_grid.Count != 0)
+                        if (userInterface.enabled == false)
                         {
                             DeleteGrid();
-                            DeleteMenuButton();
                             userInterface.enabled = true;
                             DrawMenuButton(true);
 
@@ -140,37 +138,39 @@ namespace NTI.Scripts
                         else
                         {
                             userInterface.enabled = false;
-                            DeleteMenuButton();
                             DrawGrid();
                             DrawMenuButton(false);
 
                         }
                     }
 
-                    for (var i = 0; i < height; i++)
+                    if (userInterface.enabled == false)
                     {
-                        for (var j = 0; j < width; j++)
+                        for (var i = 0; i < height; i++)
                         {
-                            Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                            RaycastHit raycastHit;
-                            if (Physics.Raycast(raycast, out raycastHit))
+                            for (var j = 0; j < width; j++)
                             {
-                                if (raycastHit.collider.name == i.ToString() + '_' + j.ToString())
+                                var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                                RaycastHit raycastHit;
+                                if (Physics.Raycast(raycast, out raycastHit))
                                 {
-                                    var sprite = _grid[i][j].GetComponent<SpriteRenderer>();
-                                    if (sprite.color != _activeCellColor)
+                                    if (raycastHit.collider.name == i.ToString() + '_' + j.ToString())
                                     {
-                                        sprite.color = _activeCellColor;
-                                    }
-                                    else
-                                    {
-                                        var tmpColor = square.GetComponent<SpriteRenderer>().color;
-                                        sprite.color = tmpColor;
-                                    }
+                                        var sprite = _grid[i, j].GetComponent<SpriteRenderer>();
+                                        if (sprite.color != _activeCellColor)
+                                        {
+                                            sprite.color = _activeCellColor;
+                                        }
+                                        else
+                                        {
+                                            var tmpColor = square.GetComponent<SpriteRenderer>().color;
+                                            sprite.color = tmpColor;
+                                        }
 
+                                    }
                                 }
-                            }
 
+                            }
                         }
                     }
                 }
