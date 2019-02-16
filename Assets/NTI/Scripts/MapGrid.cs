@@ -12,7 +12,6 @@ namespace NTI.Scripts
         [SerializeField] private uint squareSize = 7;
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
-        private Vector3 _position;
         private uint height = 10;
         private uint width = 10;
         private float movement_x = 0;
@@ -26,7 +25,7 @@ namespace NTI.Scripts
         {
             square.transform.localScale = new Vector3(5, 5, 0);
             var position = new Vector3(0,0,0);
-            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
             menuBtn.transform.SetParent(this.transform);
             var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
             menuBtnBoxCollider.name = "menu";
@@ -45,8 +44,8 @@ namespace NTI.Scripts
 
             }
             
-            _position = new Vector3(0, 0, padding);
-            menuBtn.transform.position = _position;
+             var position = new Vector3(0, 0, padding);
+            menuBtn.transform.position = position;
             menuBtn.SetActive(true);
         }
 
@@ -85,8 +84,8 @@ namespace NTI.Scripts
                 for (var j = 0; j < width; j++)
                 {
 
-                    _position = new Vector3(i * squareSize - movement_x, 0, j * squareSize - movement_z);
-                    var current = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+                    var position = new Vector3(i * squareSize - movement_x, 0, j * squareSize - movement_z);
+                    var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
                     current.SetActive(true);
                     current.transform.SetParent(this.transform);
                     var currentBoxCollider = current.AddComponent<BoxCollider>();
