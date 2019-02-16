@@ -21,7 +21,17 @@ namespace NTI.Scripts
         private GameObject[,] _grid;
         private GameObject menuBtn;
 
-        
+
+        private void CreateMenuButton()
+        {
+            square.transform.localScale = new Vector3(5, 5, 0);
+            var position = new Vector3(0,0,0);
+            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn.transform.SetParent(this.transform);
+            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
+            menuBtnBoxCollider.name = "menu";
+            
+        }
         private void DrawMenuButton(bool UIOn)
         {
             var padding = 0f;
@@ -34,18 +44,10 @@ namespace NTI.Scripts
                 padding = -(width / 2 + 1) * squareSize;
 
             }
-            square.transform.localScale = new Vector3(5, 5, 0);
+            
             _position = new Vector3(0, 0, padding);
-            menuBtn = Instantiate(square, _position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
+            menuBtn.transform.position = _position;
             menuBtn.SetActive(true);
-            menuBtn.transform.SetParent(this.transform);
-            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
-            menuBtnBoxCollider.name = "menu";
-        }
-
-        private void DeleteMenuButton()
-        {
-            Destroy(menuBtn);
         }
 
         private void DrawGrid()
@@ -110,7 +112,9 @@ namespace NTI.Scripts
         private void Start()
         {
             userInterface.enabled = true;
+            CreateMenuButton();
             DrawMenuButton(true);
+            
         }
 
         private void Update()
@@ -128,7 +132,6 @@ namespace NTI.Scripts
                         if (userInterface.enabled == false)
                         {
                             DeleteGrid();
-                            DeleteMenuButton();
                             userInterface.enabled = true;
                             DrawMenuButton(true);
 
@@ -136,7 +139,6 @@ namespace NTI.Scripts
                         else
                         {
                             userInterface.enabled = false;
-                            DeleteMenuButton();
                             DrawGrid();
                             DrawMenuButton(false);
 
