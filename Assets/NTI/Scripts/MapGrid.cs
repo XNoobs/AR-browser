@@ -24,13 +24,13 @@ namespace NTI.Scripts
         private void CreateMenuButton()
         {
             square.transform.localScale = new Vector3(5, 5, 0);
-            var position = new Vector3(0,0,0);
+            var position = new Vector3(0, 0, 0);
             menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
             menuBtn.transform.SetParent(this.transform);
             var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
             menuBtnBoxCollider.name = "menu";
-            
         }
+
         private void DrawMenuButton(bool UIOn)
         {
             var padding = 0f;
@@ -41,10 +41,9 @@ namespace NTI.Scripts
             else
             {
                 padding = -(width / 2 + 1) * squareSize;
-
             }
-            
-             var position = new Vector3(0, 0, padding);
+
+            var position = new Vector3(0, 0, padding);
             menuBtn.transform.position = position;
             menuBtn.SetActive(true);
         }
@@ -56,8 +55,8 @@ namespace NTI.Scripts
 
             float movementX;
             float movementZ;
-            
-            _grid = new GameObject[height,width];
+
+            _grid = new GameObject[height, width];
             if (height % 2 == 0)
             {
                 movementX = Convert.ToSingle((height / 2 - 0.5) * squareSize);
@@ -81,10 +80,8 @@ namespace NTI.Scripts
 
             for (var i = 0; i < height; i++)
             {
-
                 for (var j = 0; j < width; j++)
                 {
-
                     var position = new Vector3(i * squareSize - movementX, 0, j * squareSize - movementZ);
                     var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
                     current.SetActive(true);
@@ -94,7 +91,6 @@ namespace NTI.Scripts
                     _grid[i, j] = current;
                 }
             }
-
         }
 
         private void DeleteGrid()
@@ -103,7 +99,7 @@ namespace NTI.Scripts
             {
                 for (var j = 0; j < width; j++)
                 {
-                    Destroy(_grid[i,j]);
+                    Destroy(_grid[i, j]);
                 }
             }
         }
@@ -115,66 +111,55 @@ namespace NTI.Scripts
             CreateMenuButton();
             DrawMenuButton(true);
             //caching objects refs to increase performance
-            _inputHeight = GameObject.Find("size_x").GetComponent<InputField>(); 
+            _inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
             _inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
-            
         }
 
         private void Update()
         {
-
             if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                var raycastMenu = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                RaycastHit raycastHitMenu;
-                if (Physics.Raycast(raycastMenu, out raycastHitMenu))
+                var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                RaycastHit raycastHit;
+
+                if (Physics.Raycast(raycast, out raycastHit))
                 {
-                    
-                    if (raycastHitMenu.collider.name == "menu")
-                    {
-                        if (userInterface.enabled == false)
-                        {
-                            DeleteGrid();
-                            userInterface.enabled = true;
-                            DrawMenuButton(true);
-
-                        }
-                        else
-                        {
-                            userInterface.enabled = false;
-                            DrawGrid();
-                            DrawMenuButton(false);
-
-                        }
-                    }
-
                     if (userInterface.enabled == false)
                     {
                         for (var i = 0; i < height; i++)
                         {
                             for (var j = 0; j < width; j++)
                             {
-                                var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                                RaycastHit raycastHit;
-                                if (Physics.Raycast(raycast, out raycastHit))
+                                if (raycastHit.collider.name == i.ToString() + '_' + j.ToString())
                                 {
-                                    if (raycastHit.collider.name == i.ToString() + '_' + j.ToString())
+                                    var sprite = _grid[i, j].GetComponent<SpriteRenderer>();
+                                    if (sprite.color != _activeCellColor)
                                     {
-                                        var sprite = _grid[i, j].GetComponent<SpriteRenderer>();
-                                        if (sprite.color != _activeCellColor)
-                                        {
-                                            sprite.color = _activeCellColor;
-                                        }
-                                        else
-                                        {
-                                            var tmpColor = square.GetComponent<SpriteRenderer>().color;
-                                            sprite.color = tmpColor;
-                                        }
-
+                                        sprite.color = _activeCellColor;
+                                    }
+                                    else
+                                    {
+                                        var tmpColor = square.GetComponent<SpriteRenderer>().color;
+                                        sprite.color = tmpColor;
                                     }
                                 }
-
                             }
+                        }
+                    }
+
+                    if (raycastHit.collider.name == "menu")
+                    {
+                        if (userInterface.enabled == false)
+                        {
+                            DeleteGrid();
+                            userInterface.enabled = true;
+                            DrawMenuButton(true);
+                        }
+                        else
+                        {
+                            userInterface.enabled = false;
+                            DrawGrid();
+                            DrawMenuButton(false);
                         }
                     }
                 }
