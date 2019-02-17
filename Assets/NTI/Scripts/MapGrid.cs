@@ -14,9 +14,9 @@ namespace NTI.Scripts
         [SerializeField] private Canvas userInterface;
         private uint height = 10;
         private uint width = 10;
-        private float movement_x = 0;
-        private float movement_z = 0;
         private readonly Color _activeCellColor = Color.red;
+        private InputField _inputHeight;
+        private InputField _inputWidth;
         private GameObject[,] _grid;
         private GameObject menuBtn;
 
@@ -51,28 +51,29 @@ namespace NTI.Scripts
 
         private void DrawGrid()
         {
-            var inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
-            var inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
-            UInt32.TryParse(inputHeight.text, out height);
-            UInt32.TryParse(inputWidth.text, out width);
+            UInt32.TryParse(_inputHeight.text, out height);
+            UInt32.TryParse(_inputWidth.text, out width);
+
+            float movementX;
+            float movementZ;
             
             _grid = new GameObject[height,width];
             if (height % 2 == 0)
             {
-                movement_x = Convert.ToSingle((height / 2 - 0.5) * squareSize);
+                movementX = Convert.ToSingle((height / 2 - 0.5) * squareSize);
             }
             else
             {
-                movement_x = height / 2 * squareSize;
+                movementX = height / 2 * squareSize;
             }
 
             if (width % 2 == 0)
             {
-                movement_z = Convert.ToSingle((width / 2 - 0.5) * squareSize);
+                movementZ = Convert.ToSingle((width / 2 - 0.5) * squareSize);
             }
             else
             {
-                movement_z = width / 2 * squareSize;
+                movementZ = width / 2 * squareSize;
             }
 
 
@@ -84,7 +85,7 @@ namespace NTI.Scripts
                 for (var j = 0; j < width; j++)
                 {
 
-                    var position = new Vector3(i * squareSize - movement_x, 0, j * squareSize - movement_z);
+                    var position = new Vector3(i * squareSize - movementX, 0, j * squareSize - movementZ);
                     var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
                     current.SetActive(true);
                     current.transform.SetParent(this.transform);
@@ -113,6 +114,9 @@ namespace NTI.Scripts
             userInterface.enabled = true;
             CreateMenuButton();
             DrawMenuButton(true);
+            //caching objects refs to increase performance
+            _inputHeight = GameObject.Find("size_x").GetComponent<InputField>(); 
+            _inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
             
         }
 
