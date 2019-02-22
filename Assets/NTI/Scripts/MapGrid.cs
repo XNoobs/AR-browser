@@ -126,23 +126,19 @@ namespace NTI.Scripts
                 {
                     if (userInterface.enabled == false)
                     {
-                        for (var i = 0; i < height; i++)
+                        if (raycastHit.collider.name != "menu")
                         {
-                            for (var j = 0; j < width; j++)
+                            var name = raycastHit.collider.name.Split('_');
+                            int[] coordinates = {Convert.ToInt16(name[0]), Convert.ToInt16(name[1])};
+                            var sprite = _grid[coordinates[0], coordinates[1]].GetComponent<SpriteRenderer>();
+                            if (sprite.color != _activeCellColor)
                             {
-                                if (raycastHit.collider.name == i.ToString() + '_' + j.ToString())
-                                {
-                                    var sprite = _grid[i, j].GetComponent<SpriteRenderer>();
-                                    if (sprite.color != _activeCellColor)
-                                    {
-                                        sprite.color = _activeCellColor;
-                                    }
-                                    else
-                                    {
-                                        var tmpColor = square.GetComponent<SpriteRenderer>().color;
-                                        sprite.color = tmpColor;
-                                    }
-                                }
+                                sprite.color = _activeCellColor;
+                            }
+                            else
+                            {
+                                var tmpColor = square.GetComponent<SpriteRenderer>().color;
+                                sprite.color = tmpColor;
                             }
                         }
                     }
