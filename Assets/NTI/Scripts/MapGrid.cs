@@ -3,26 +3,20 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System;
+using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
 namespace NTI.Scripts
 {
     public class MapGrid : MonoBehaviour
     {
-        private uint _padding;
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
         [SerializeField] private GameObject objectToPlace;
-        private uint height = 10;
-        private uint width = 10;
-        private float movementX;
-        private float movementZ;
-        private InputField _inputHeight;
-        private InputField _inputWidth;
-        private InputField _inputSquareSize;
         private GameObject[,] _grid;
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
+        private AppConfigHandler _configHandler;
 
 
         private void CreateMenuButton()
@@ -35,6 +29,7 @@ namespace NTI.Scripts
             menuBtnBoxCollider.name = "menu";
         }
 
+      
         private void DrawMenuButton(bool UIOn)
         {
             var buttonPos = 0f;
@@ -44,7 +39,7 @@ namespace NTI.Scripts
             }
             else
             {
-                buttonPos = -(width / 2 + 1) * _padding;
+                buttonPos = -(_configHandler.width / 2 + 1) * _configHandler.padding;
             }
 
             var position = new Vector3(0, 0, buttonPos);
@@ -54,40 +49,16 @@ namespace NTI.Scripts
 
         private void DrawGrid()
         {
-            UInt32.TryParse(_inputHeight.text, out height);
-            UInt32.TryParse(_inputWidth.text, out width);
+            square.transform.localScale = new Vector3(_configHandler.padding-1, _configHandler.padding-1, 0);
 
-            uint tmp;
-            UInt32.TryParse(_inputSquareSize.text, out tmp);
-            square.transform.localScale = new Vector3(tmp, tmp, 0);
-            _padding = tmp + 1;
+            _grid = new GameObject[_configHandler.height, _configHandler.width];
+            _cellsVacated = new bool[_configHandler.height, _configHandler.width];
 
-            _grid = new GameObject[height, width];
-            _cellsVacated = new bool[height, width];
-            
-            if (height % 2 == 0)
+            for (var i = 0; i < _configHandler.height; i++)
             {
-                movementX = Convert.ToSingle((height / 2 - 0.5) * _padding);
-            }
-            else
-            {
-                movementX = height / 2 * _padding;
-            }
-
-            if (width % 2 == 0)
-            {
-                movementZ = Convert.ToSingle((width / 2 - 0.5) * _padding);
-            }
-            else
-            {
-                movementZ = width / 2 * _padding;
-            }
-
-            for (var i = 0; i < height; i++)
-            {
-                for (var j = 0; j < width; j++)
+                for (var j = 0; j < _configHandler.width; j++)
                 {
-                    var position = new Vector3(i * _padding - movementX, 0, j * _padding - movementZ);
+                    var position = new Vector3(i * _configHandler.padding - _configHandler.movementX, 0, j * _configHandler.padding - _configHandler.movementZ);
                     var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
                     current.SetActive(true);
                     current.transform.SetParent(this.transform);
@@ -101,41 +72,36 @@ namespace NTI.Scripts
 
         private void DeleteGrid()
         {
-            for (var i = 0; i < height; i++)
+            for (var i = 0; i < _configHandler.height; i++)
             {
-                for (var j = 0; j < width; j++)
+                for (var j = 0; j < _configHandler.width; j++)
                 {
                     Destroy(_grid[i, j]);
                 }
             }
         }
 
-        private void placeObject(GameObject objectToPlace, int[] coordinates, Quaternion rotation, bool vacation)
+        private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
-            var position = new Vector3(coordinates[0] * _padding - movementX, 0, coordinates[1] * _padding - movementZ);
+            var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
             current.SetActive(true);
             current.transform.SetParent(this.transform);
             var currentBoxCollider = current.AddComponent<BoxCollider>();
-            currentBoxCollider.name = coordinates[0].ToString() + '_' + coordinates[1].ToString();
-            _grid[coordinates[0], coordinates[1]] = current;
-            _cellsVacated[coordinates[0], coordinates[1]] = vacation;
+            currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2.ToString();
+            _grid[coordinates.Item1, coordinates.Item2] = current;
+            _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
         }
         
 
         private void Start()
         {
+            _configHandler = GameObject.Find("MainPanel").GetComponent<AppConfigHandler>();
             square.transform.localScale = new Vector3(5, 5, 0);
             userInterface.enabled = true;
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
-            _padding = Convert.ToUInt16(squareSize.x+1);
             CreateMenuButton();
             DrawMenuButton(true);
-            
-            //caching objects refs to increase performance
-            _inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
-            _inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
-            _inputSquareSize = GameObject.Find("squareSize").GetComponent<InputField>();
         }
 
         private void Update()
@@ -152,16 +118,17 @@ namespace NTI.Scripts
                         if (raycastHit.collider.name != "menu")
                         {
                             var name = raycastHit.collider.name.Split('_');
-                            int[] coordinates = {Convert.ToInt16(name[0]), Convert.ToInt16(name[1])};
-                            var cellHitted = _grid[coordinates[0], coordinates[1]];
-                            if (_cellsVacated[coordinates[0],coordinates[1]] == false)
+                            Tuple<int, int> coordinates =
+                                new Tuple<int, int>(Convert.ToInt16(name[0]), Convert.ToInt16(name[1]));
+                            var cellHitted = _grid[coordinates.Item1, coordinates.Item2];
+                            if (_cellsVacated[coordinates.Item1,coordinates.Item2] == false)
                             {
-                                placeObject(objectToPlace, coordinates, Quaternion.Euler(0f,0f,0f), true);
+                                PlaceObject(objectToPlace, coordinates, Quaternion.Euler(0f,0f,0f), true);
                                 Destroy(cellHitted);
                             }
                             else
                             {
-                                placeObject(square,coordinates, Quaternion.Euler(90f,0f,0f), false);
+                                PlaceObject(square,coordinates, Quaternion.Euler(90f,0f,0f), false);
                                 Destroy(cellHitted);
                             }
 
