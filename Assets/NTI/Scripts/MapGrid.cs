@@ -58,14 +58,7 @@ namespace NTI.Scripts
             {
                 for (var j = 0; j < _configHandler.width; j++)
                 {
-                    var position = new Vector3(i * _configHandler.padding - _configHandler.movementX, 0, j * _configHandler.padding - _configHandler.movementZ);
-                    var current = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
-                    current.SetActive(true);
-                    current.transform.SetParent(this.transform);
-                    var currentBoxCollider = current.AddComponent<BoxCollider>();
-                    currentBoxCollider.name = i.ToString() + '_' + j.ToString();
-                    _grid[i, j] = current;
-                    _cellsVacated[i, j] = false;
+                    PlaceObject(square, new Tuple<int, int>(i, j), Quaternion.Euler(90f,0f,0f), false);
                 }
             }
         }
