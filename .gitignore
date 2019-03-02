@@ -24,6 +24,8 @@ ExportedObj/
 *.pdb
 *.opendb
 *.VC.db
+.gradle
+.idea
 
 # Unity3D generated meta files
 *.pidb.meta
