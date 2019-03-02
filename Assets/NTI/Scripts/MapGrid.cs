@@ -78,10 +78,18 @@ namespace NTI.Scripts
         {
             var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
-            current.SetActive(true);
+            if (vacation == true)
+            {
+                var sizeObj = current.GetComponent<MeshRenderer>().bounds.size;
+                var sizeCell = square.GetComponent<SpriteRenderer>().bounds.size;
+                var maxBound = sizeObj.x > sizeObj.z ? sizeObj.x : sizeObj.z;
+                var scaleFactor = sizeCell.x / maxBound;
+                current.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+            }
             current.transform.SetParent(this.transform);
             var currentBoxCollider = current.AddComponent<BoxCollider>();
             currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2.ToString();
+            current.SetActive(true);
             _grid[coordinates.Item1, coordinates.Item2] = current;
             _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
         }
