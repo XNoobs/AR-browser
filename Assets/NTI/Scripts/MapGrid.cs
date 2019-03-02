@@ -76,16 +76,16 @@ namespace NTI.Scripts
 
         private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
+            var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
+            var current = Instantiate(objectToPlace, position, rotation) as GameObject;
             if (vacation == true)
             {
-                var sizeObj = objectToPlace.GetComponent<MeshRenderer>().bounds.size;
+                var sizeObj = current.GetComponent<MeshRenderer>().bounds.size;
                 var sizeCell = square.GetComponent<SpriteRenderer>().bounds.size;
                 var maxBound = sizeObj.x > sizeObj.z ? sizeObj.x : sizeObj.z;
                 var scaleFactor = sizeCell.x / maxBound;
-                objectToPlace.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+                current.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
             }
-            var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
-            var current = Instantiate(objectToPlace, position, rotation) as GameObject;
             current.transform.SetParent(this.transform);
             var currentBoxCollider = current.AddComponent<BoxCollider>();
             currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2.ToString();
