@@ -78,8 +78,8 @@ namespace NTI.Scripts
         {
             if (vacation == true)
             {
-                var sizeObj = objectToPlace.GetComponent<Mesh>().bounds.size;
-                var sizeCell = square.GetComponent<Mesh>().bounds.size;
+                var sizeObj = objectToPlace.GetComponent<MeshRenderer>().bounds.size;
+                var sizeCell = square.GetComponent<SpriteRenderer>().bounds.size;
                 var maxBound = sizeObj.x > sizeObj.z ? sizeObj.x : sizeObj.z;
                 var scaleFactor = sizeCell.x / maxBound;
                 objectToPlace.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
