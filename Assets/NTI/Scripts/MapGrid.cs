@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System;
+using System.Threading.Tasks;
 using UnityEngine.Experimental.UIElements;
 using UnityEngine.UI;
 
@@ -96,12 +97,17 @@ namespace NTI.Scripts
 
         private void Start()
         {
+            var assetLoader = new AssetLoader(50007);
+            assetLoader.Run();
+            
+            
             _configHandler = GameObject.Find("MainPanel").GetComponent<AppConfigHandler>();
             square.transform.localScale = new Vector3(5, 5, 0);
             userInterface.enabled = true;
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
             CreateMenuButton();
             DrawMenuButton(true);
+           
         }
 
         private void Update()
