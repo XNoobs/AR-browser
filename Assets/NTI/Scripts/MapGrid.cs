@@ -76,12 +76,20 @@ namespace NTI.Scripts
 
         private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
+            if (vacation == true)
+            {
+                var sizeObj = objectToPlace.GetComponent<Mesh>().bounds.size;
+                var sizeCell = square.GetComponent<Mesh>().bounds.size;
+                var maxBound = sizeObj.x > sizeObj.z ? sizeObj.x : sizeObj.z;
+                var scaleFactor = sizeCell.x / maxBound;
+                objectToPlace.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+            }
             var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
-            current.SetActive(true);
             current.transform.SetParent(this.transform);
             var currentBoxCollider = current.AddComponent<BoxCollider>();
             currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2.ToString();
+            current.SetActive(true);
             _grid[coordinates.Item1, coordinates.Item2] = current;
             _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
         }
