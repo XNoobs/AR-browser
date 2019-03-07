@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Skufler\.Rider2018.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Skufler\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_AR-app.1121525280.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Skufler\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_AR-app.1121525280.00" t="ExcludeRecursive" />
     <e p="C:\Users\Skufler\Documents\GitHub\AR-app" t="IncludeRecursive">
       <e p="AR-app.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
