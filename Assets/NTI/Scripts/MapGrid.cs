@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 using Newtonsoft.Json;
 using System;
@@ -7,23 +8,35 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using EasyAR;
+// using Eas
 
 
 namespace NTI.Scripts
 {
+
+    // public class CustomImageTracker : 
+
+
     public class MapGrid : MonoBehaviour
     {
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
         [SerializeField] private GameObject objectToPlace;
+        [SerializeField] private GameObject _imageTrackerContainer;
+        private ImageTrackerBehaviour _imageTracker;
+        private UnityAction _unityAction;
         private GameObject[,] _grid;
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
+        private Frame frame;
+
 
 
         private void CreateMenuButton()
         {
+
             square.transform.localScale = new Vector3(5, 5, 0);
             var position = new Vector3(0, 0, 0);
             menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
@@ -163,10 +176,21 @@ namespace NTI.Scripts
             DrawMenuButton(true);
 
             var fetchFiles = new Timer(async (e) => { await Fetch(); }, null, 5, 5);
+
+            _imageTracker = _imageTrackerContainer.GetComponent<ImageTrackerBehaviour>();
+            _imageTracker.TargetLoad += test;
         }
+
+        void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)
+        {
+            Debug.Log("loaded");
+        }
+
 
         private void Update()
         {
+            
+
             if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);

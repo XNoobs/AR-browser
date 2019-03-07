@@ -8,6 +8,8 @@
 
 using UnityEngine;
 using EasyAR;
+using System.Collections.Generic;
+
 
 namespace Sample
 {
@@ -23,6 +25,8 @@ namespace Sample
             + "      Bundle ID: cn.easyar.samples.unity.helloar\n"
             + "  3. find the created item in the list and show key\n"
             + "  4. replace all text in TextArea with your key";
+
+        public List<Target> targets = new List<Target>();
 
         private void Awake()
         {
@@ -51,11 +55,17 @@ namespace Sample
         void OnTargetFound(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
             Debug.Log("<Global Handler> Found: " + target.Id);
+
+            targets.Add(target);
+
         }
 
         void OnTargetLost(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
             Debug.Log("<Global Handler> Lost: " + target.Id);
+
+            targets.Remove(target);
+
         }
 
         void OnTargetLoad(ImageTrackerBaseBehaviour trackerBehaviour, ImageTargetBaseBehaviour targetBehaviour, Target target, bool status)
