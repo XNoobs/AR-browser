@@ -39,10 +39,11 @@ public class DebugBehaviourScript : MonoBehaviour
         {
             foreach (var target in _setupBehaviour.targets)
             {
-                var current = trackersNames.IndexOf(target.Name);
+                /*var current = trackersNames.IndexOf(target.Name);
                 gameObjects.Add(current);
                 sumX += current.transform.position.x;
                 sumZ += current.transform.position.z;
+                */
             }
             posX = sumX / _setupBehaviour.targets.Count;
             posZ = sumZ / _setupBehaviour.targets.Count;
