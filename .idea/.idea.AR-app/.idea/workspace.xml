@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="27002edd-60d5-4653-8a97-adf6de03bea0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AR-app.sln" beforeDir="false" afterPath="$PROJECT_DIR$/AR-app.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DebugBehaviourScript.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/DebugBehaviourScript.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NTI/Scenes/NTI.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NTI/Scenes/NTI.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/marker.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/marker.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StreamingAssets/targets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StreamingAssets/targets.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,56 +23,17 @@
       <file leaf-file-name="MapGrid.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-              <folding>
-                <marker date="1551963259115" expanded="false" signature="6:184" ph="..." />
-                <marker date="1551963259115" expanded="true" signature="208:8822" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="251:8820" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="626:1034" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="1077:3332" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="1144:3322" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="1178:3096" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="1470:1584" ph="/* if responseBody == &quot;\&quot;{}\\n\&quot;&quot; =&gt; all files are up-to-date ... */" />
-                <marker date="1551963259115" expanded="true" signature="1638:2956" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="2024:2934" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="2390:2738" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="2786:2908" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="2981:3077" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="3143:3308" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="3393:3559" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="3608:4020" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="3672:3733" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="3750:3864" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4053:4640" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4399:4630" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4476:4616" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4675:4924" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4745:4914" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="4822:4900" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="5049:6228" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="5093:5529" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="6267:6717" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="6748:8814" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="6847:8804" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="7051:8790" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="7125:8175" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="7211:8153" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="7659:7879" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="7912:8126" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="8235:8772" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="8317:8519" ph="{...}" />
-                <marker date="1551963259115" expanded="true" signature="8548:8750" ph="{...}" />
-              </folding>
+            <state relative-caret-position="382">
+              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppConfigHandler.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AppConfigHandler.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="690">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+              <caret line="51" selection-start-line="51" selection-end-line="51" />
               <folding>
                 <marker date="1551364352068" expanded="false" signature="6:150" ph="..." />
                 <marker date="1551364352068" expanded="true" signature="197:1916" ph="{...}" />
@@ -81,6 +45,72 @@
                 <marker date="1551364352068" expanded="true" signature="1681:1784" ph="{...}" />
                 <marker date="1551364352068" expanded="true" signature="1801:1878" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ARGlobalSetupBehaviour.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/ARGlobalSetupBehaviour.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+              <folding>
+                <marker date="1551987694766" expanded="true" signature="0:609" ph="/* ============================================================================================================== ... */" />
+                <marker date="1551987694766" expanded="false" signature="617:677" ph="..." />
+                <marker date="1551987694766" expanded="true" signature="696:3556" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="754:3554" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="1424:2297" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="1561:1753" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="1872:2066" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="2147:2287" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="2422:2540" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="2664:2784" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="2925:3087" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="3230:3394" ph="{...}" />
+                <marker date="1551987694766" expanded="true" signature="3484:3548" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DebugBehaviourScript.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="617">
+              <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="45" />
+              <folding>
+                <marker date="1552055269101" expanded="false" signature="6:120" ph="..." />
+                <marker date="1552055269101" expanded="true" signature="143:2643" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="199:2641" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="624:858" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="924:2635" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="975:1258" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="1012:1128" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="1165:1243" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="1272:1715" ph="/* Debug.Log(&quot;start&quot;); ... */" />
+                <marker date="1552055269101" expanded="true" signature="1878:2488" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="1942:2190" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="2004:2172" ph="{...}" />
+                <marker date="1552055269101" expanded="true" signature="2505:2579" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EventSystem.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6B053575-0F23-4249-B955-5C0820A971F9/74/33d57b3c/EventSystem.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="309" column="6" selection-start-line="309" selection-start-column="6" selection-end-line="309" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImageTrackerBaseBehaviour.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/213403FA-8F75-463A-98F3-6EF470EF7C9C/8e/a0af27b8/ImageTrackerBaseBehaviour.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2610">
+              <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -98,8 +128,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/ARGlobalSetupBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6B053575-0F23-4249-B955-5C0820A971F9/74/33d57b3c/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/213403FA-8F75-463A-98F3-6EF470EF7C9C/8e/a0af27b8/ImageTrackerBaseBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -107,6 +141,7 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs" />
         <option value="$PROJECT_DIR$/Assets/NTI/Scripts/AssetLoader.cs" />
+        <option value="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" />
       </list>
     </option>
   </component>
@@ -204,11 +239,13 @@
   <component name="PropertiesComponent">
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="attach to &#9;ACTION&#9;AttachToUnityProcess&#10;attach to&#9;ACTION&#9;XDebugger.AttachToLocalProcess&#10;atta&#9;RUN_CONFIGURATION&#9;Attach to Unity Editor&#10;unity&#9;ACTION&#9;AttachToUnityProcess" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.build.unityPlugin" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -255,11 +292,13 @@
       <workItem from="1551540170602" duration="63000" />
       <workItem from="1551540296497" duration="9000" />
       <workItem from="1551980704439" duration="1720000" />
+      <workItem from="1552051479629" duration="1639000" />
+      <workItem from="1552054929179" duration="996000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16891000" />
+    <option name="totallyTimeSpent" value="19526000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -272,6 +311,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Errors In Solution" order="4" />
@@ -280,26 +320,26 @@
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Terminal" order="14" visible="true" weight="0.32905984" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2751678" />
+      <window_info anchor="bottom" id="Terminal" order="14" weight="0.32905984" />
+      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28322148" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Unity" order="11" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37818697" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37749287" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="NuGet" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Unity" order="11" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Performance Profiler" order="8" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Unit Tests Coverage" order="6" />
     </layout>
   </component>
@@ -318,53 +358,143 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs</url>
+          <line>84</line>
+          <properties documentPath="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" initialLine="84">
+            <startOffsets>
+              <startOffset value="2536" />
+            </startOffsets>
+            <endOffsets>
+              <endOffset value="2565" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
+      <option name="time" value="8" />
     </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>trackers</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>trac</expression-string>
+        <language-id>C#</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <marker date="1551364352068" expanded="false" signature="6:150" ph="..." />
+            <marker date="1551364352068" expanded="true" signature="197:1916" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="524:774" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="832:1914" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1285:1890" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1449:1553" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1570:1648" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1681:1784" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1801:1878" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/ARGlobalSetupBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <marker date="1551987694766" expanded="true" signature="0:609" ph="/* ============================================================================================================== ... */" />
+            <marker date="1551987694766" expanded="false" signature="617:677" ph="..." />
+            <marker date="1551987694766" expanded="true" signature="696:3556" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="754:3554" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1424:2297" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1561:1753" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1872:2066" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2147:2287" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2422:2540" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2664:2784" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2925:3087" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="3230:3394" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="3484:3548" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/213403FA-8F75-463A-98F3-6EF470EF7C9C/8e/a0af27b8/ImageTrackerBaseBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2610">
+          <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+          <folding>
+            <marker date="1552055269101" expanded="false" signature="6:120" ph="..." />
+            <marker date="1552055269101" expanded="true" signature="143:2643" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="199:2641" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="624:858" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="924:2635" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="975:1258" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1012:1128" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1165:1243" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1272:1715" ph="/* Debug.Log(&quot;start&quot;); ... */" />
+            <marker date="1552055269101" expanded="true" signature="1878:2488" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1942:2190" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="2004:2172" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="2505:2579" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+          <folding>
+            <marker date="1551364352068" expanded="false" signature="6:150" ph="..." />
+            <marker date="1551364352068" expanded="true" signature="197:1916" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="524:774" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="832:1914" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1285:1890" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1449:1553" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1570:1648" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1681:1784" ph="{...}" />
+            <marker date="1551364352068" expanded="true" signature="1801:1878" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
           <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <marker date="1551963259115" expanded="false" signature="6:184" ph="..." />
-            <marker date="1551963259115" expanded="true" signature="208:8822" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="251:8820" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="626:1034" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1077:3332" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1144:3322" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1178:3096" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1470:1584" ph="/* if responseBody == &quot;\&quot;{}\\n\&quot;&quot; =&gt; all files are up-to-date ... */" />
-            <marker date="1551963259115" expanded="true" signature="1638:2956" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2024:2934" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2390:2738" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2786:2908" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2981:3077" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3143:3308" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3393:3559" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3608:4020" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3672:3733" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3750:3864" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4053:4640" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4399:4630" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4476:4616" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4675:4924" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4745:4914" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4822:4900" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="5049:6228" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="5093:5529" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6267:6717" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6748:8814" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6847:8804" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7051:8790" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7125:8175" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7211:8153" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7659:7879" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7912:8126" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8235:8772" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8317:8519" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8548:8750" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -392,56 +522,10 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3845A180-C26B-4889-BC2D-47593A665814/51/d583ca7b/TcpListener.cs" />
     <entry file="file://$PROJECT_DIR$/map.osm" />
     <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AssetLoader.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-          <folding>
-            <marker date="1551963259115" expanded="false" signature="6:184" ph="..." />
-            <marker date="1551963259115" expanded="true" signature="208:8822" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="251:8820" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="626:1034" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1077:3332" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1144:3322" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1178:3096" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="1470:1584" ph="/* if responseBody == &quot;\&quot;{}\\n\&quot;&quot; =&gt; all files are up-to-date ... */" />
-            <marker date="1551963259115" expanded="true" signature="1638:2956" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2024:2934" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2390:2738" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2786:2908" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="2981:3077" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3143:3308" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3393:3559" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3608:4020" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3672:3733" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="3750:3864" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4053:4640" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4399:4630" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4476:4616" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4675:4924" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4745:4914" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="4822:4900" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="5049:6228" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="5093:5529" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6267:6717" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6748:8814" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="6847:8804" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7051:8790" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7125:8175" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7211:8153" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7659:7879" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="7912:8126" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8235:8772" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8317:8519" ph="{...}" />
-            <marker date="1551963259115" expanded="true" signature="8548:8750" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
           <folding>
             <marker date="1551364352068" expanded="false" signature="6:150" ph="..." />
             <marker date="1551364352068" expanded="true" signature="197:1916" ph="{...}" />
@@ -452,6 +536,72 @@
             <marker date="1551364352068" expanded="true" signature="1570:1648" ph="{...}" />
             <marker date="1551364352068" expanded="true" signature="1681:1784" ph="{...}" />
             <marker date="1551364352068" expanded="true" signature="1801:1878" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/DebugBehaviourScript.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/ARGlobalSetupBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="55" selection-start-line="17" selection-start-column="55" selection-end-line="17" selection-end-column="55" />
+          <folding>
+            <marker date="1551987694766" expanded="true" signature="0:609" ph="/* ============================================================================================================== ... */" />
+            <marker date="1551987694766" expanded="false" signature="617:677" ph="..." />
+            <marker date="1551987694766" expanded="true" signature="696:3556" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="754:3554" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1424:2297" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1561:1753" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="1872:2066" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2147:2287" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2422:2540" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2664:2784" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="2925:3087" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="3230:3394" ph="{...}" />
+            <marker date="1551987694766" expanded="true" signature="3484:3548" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/213403FA-8F75-463A-98F3-6EF470EF7C9C/8e/a0af27b8/ImageTrackerBaseBehaviour.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2610">
+          <caret line="174" column="6" selection-start-line="174" selection-start-column="6" selection-end-line="174" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6B053575-0F23-4249-B955-5C0820A971F9/74/33d57b3c/EventSystem.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="309" column="6" selection-start-line="309" selection-start-column="6" selection-end-line="309" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="86" column="20" selection-start-line="86" selection-start-column="20" selection-end-line="86" selection-end-column="45" />
+          <folding>
+            <marker date="1552055269101" expanded="false" signature="6:120" ph="..." />
+            <marker date="1552055269101" expanded="true" signature="143:2643" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="199:2641" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="624:858" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="924:2635" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="975:1258" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1012:1128" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1165:1243" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1272:1715" ph="/* Debug.Log(&quot;start&quot;); ... */" />
+            <marker date="1552055269101" expanded="true" signature="1878:2488" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="1942:2190" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="2004:2172" ph="{...}" />
+            <marker date="1552055269101" expanded="true" signature="2505:2579" ph="{...}" />
           </folding>
         </state>
       </provider>

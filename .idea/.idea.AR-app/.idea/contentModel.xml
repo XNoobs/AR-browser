@@ -46,6 +46,7 @@
           <e p="Scripts" t="Include">
             <e p="AppConfigHandler.cs" t="Include" />
             <e p="ARGlobalSetupBehaviour.cs" t="Include" />
+            <e p="DebugBehaviourScript.cs" t="Include" />
             <e p="MapGrid.cs" t="Include" />
             <e p="SampleImageTargetBehaviour.cs" t="Include" />
           </e>
