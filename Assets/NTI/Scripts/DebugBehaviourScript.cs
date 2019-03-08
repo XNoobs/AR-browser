@@ -14,6 +14,7 @@ namespace NTI.Scripts
         public List<Transform> trackers = new List<Transform>();
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer meshRenderer;
+        private int frameCounter=0;
         
     
     
@@ -28,63 +29,54 @@ namespace NTI.Scripts
         // Update is called once per frame
         void Update()
         {
-             for (var i = 0; i < 4; i++)
-             {
-                 try {
-                     trackers.Add(GameObject.Find(trackersNames[i]).GetComponent<Transform>());
-                 }
-                 catch (Exception e)
-                 {
-                    trackers.Add(null);
-                 }
-             }
-             /*
-            Debug.Log("start");     
-            try
+            frameCounter++;
+            if (frameCounter % 10 == 0)
             {
-                Transform[] hinges = GameObject.FindObjectsOfType(typeof(Transform)) as Transform[];
-                foreach (var hinge in hinges)
+                for (var i = 0; i < 4; i++)
                 {
-                    Debug.Log(hinge.name);
-                }
-                Debug.Log("end");
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.Message);
-            }*/
-    
-            float posX;
-            float posZ;
-    
-            float sumX=0;
-            float sumZ=0;
-
-            if (_setupBehaviour.targets.Count >= 2)
-            {
-                foreach (var tracker in trackers)
-                {
-                    if (!(tracker == null))
+                    try
                     {
-                        sumX += tracker.transform.position.x;
-                        sumZ += tracker.transform.position.z;
+                        trackers.Add(GameObject.Find(trackersNames[i]).GetComponent<Transform>());
+                    }
+                    catch (Exception e)
+                    {
+                        trackers.Add(null);
                     }
                 }
 
-                posX = sumX / trackers.Count;
-                posZ = sumZ / trackers.Count;
-    
-                Debug.Log(posX);
-                Debug.Log(posZ);
-    
-                this.transform.position = new Vector3(posX, 0, posZ);
-                meshRenderer.enabled = true;
+                float posX;
+                float posZ;
+
+                float sumX = 0;
+                float sumZ = 0;
+
+                if (_setupBehaviour.targets.Count >= 2)
+                {
+                    foreach (var tracker in trackers)
+                    {
+                        if (!(tracker == null))
+                        {
+                            sumX += tracker.position.x;
+                            sumZ += tracker.position.z;
+                        }
+                    }
+
+                    posX = sumX / trackers.Count;
+                    posZ = sumZ / trackers.Count;
+
+                    Debug.Log(posX);
+                    Debug.Log(posZ);
+
+                    this.transform.position = new Vector3(posX, 0, posZ);
+                    meshRenderer.enabled = true;
+                }
+                else
+                {
+                    meshRenderer.enabled = false;
+                }
+
+                trackers = new List<Transform>();
             }
-            else
-            {
-                meshRenderer.enabled = false;
-            }
-            trackers = new List<Transform>();
         }
     }
 }
