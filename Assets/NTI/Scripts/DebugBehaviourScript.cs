@@ -4,6 +4,8 @@ using UnityEngine;
 using EasyAR;
 using Sample;
 using System;
+using System.Collections.Concurrent;
+using System.Linq;
 
 namespace NTI.Scripts
 {
@@ -15,6 +17,8 @@ namespace NTI.Scripts
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer meshRenderer;
         private int frameCounter=0;
+        public List<Tuple<float, float>> bounds;
+        //0 - left top, 1 - right top, 2 - right bottom, 3 - left bottom
         
     
     
@@ -44,25 +48,21 @@ namespace NTI.Scripts
                     }
                 }
 
-                float posX;
-                float posZ;
+                List<Tuple<float,float>> dots = new List<Tuple<float, float>>();
 
-                float sumX = 0;
-                float sumZ = 0;
-
-                if (_setupBehaviour.targets.Count >= 2)
+                if (_setupBehaviour.targets.Count >= 3)
                 {
                     foreach (var tracker in trackers)
                     {
                         if (!(tracker == null))
                         {
-                            sumX += tracker.position.x;
-                            sumZ += tracker.position.z;
+                            Vector3 current = tracker.position;
+                            dots.Add(new Tuple<float, float>(current.x, current.z));
                         }
                     }
 
-                    posX = sumX / trackers.Count;
-                    posZ = sumZ / trackers.Count;
+                  
+                    
 
                     Debug.Log(posX);
                     Debug.Log(posZ);
