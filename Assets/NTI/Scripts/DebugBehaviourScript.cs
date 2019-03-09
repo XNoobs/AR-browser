@@ -61,9 +61,6 @@ namespace NTI.Scripts
                         }
                     }
 
-                  
-                    
-
                     Debug.Log(posX);
                     Debug.Log(posZ);
 

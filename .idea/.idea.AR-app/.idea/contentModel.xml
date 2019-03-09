@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$/../.Rider2018.3/system/extResources" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$/../.Rider2018.3/system/resharper-host/local/Transient/ReSharperHost/v183/SolutionCaches/_AR-app.-1038981477.00" t="ExcludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+    <e p="C:\Users\Skufler\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_AR-app.1121525280.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Skufler\Documents\GitHub\AR-app" t="IncludeRecursive">
       <e p="AR-app.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="EasyAR" t="Include">
+          <e p="doc" t="Include">
+            <e p="changelog.cn.txt" t="Include" />
+            <e p="changelog.en.txt" t="Include" />
+            <e p="readme.cn.txt" t="Include" />
+            <e p="readme.en.txt" t="Include" />
+          </e>
           <e p="Resources" t="Include">
             <e p="Shaders" t="Include">
               <e p="RealityPlane.shader" t="Include" />
@@ -36,17 +41,11 @@
             <e p="RenderCameraBehaviour.cs" t="Include" />
             <e p="VideoPlayerBehaviour.cs" t="Include" />
           </e>
-          <e p="doc" t="Include">
-            <e p="changelog.cn.txt" t="Include" />
-            <e p="changelog.en.txt" t="Include" />
-            <e p="readme.cn.txt" t="Include" />
-            <e p="readme.en.txt" t="Include" />
-          </e>
         </e>
         <e p="NTI" t="Include">
           <e p="Scripts" t="Include">
-            <e p="ARGlobalSetupBehaviour.cs" t="Include" />
             <e p="AppConfigHandler.cs" t="Include" />
+            <e p="ARGlobalSetupBehaviour.cs" t="Include" />
             <e p="DebugBehaviourScript.cs" t="Include" />
             <e p="MapGrid.cs" t="Include" />
             <e p="SampleImageTargetBehaviour.cs" t="Include" />
@@ -54,11 +53,11 @@
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
       <e p="Temp" t="ExcludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
       </e>
-      <e p="obj" t="ExcludeRecursive" />
-      <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
