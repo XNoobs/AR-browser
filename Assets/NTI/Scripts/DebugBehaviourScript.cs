@@ -6,6 +6,8 @@ using Sample;
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
+using System.Security.Policy;
+using UnityEditor.IMGUI.Controls;
 
 namespace NTI.Scripts
 {
@@ -17,8 +19,9 @@ namespace NTI.Scripts
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer meshRenderer;
         private int frameCounter=0;
-        public List<Tuple<float, float>> bounds;
-        //0 - left top, 1 - right top, 2 - right bottom, 3 - left bottom
+        public float height;
+        public float width;
+        public float[] centerPoint = new float[2];
         
     
     
@@ -61,13 +64,29 @@ namespace NTI.Scripts
                         }
                     }
 
-                  
+                    double diagonal = 0;
+                    Tuple<float, float> dot1;
+                    Tuple<float, float> dot2;
+                    for (var i = 0; i < dots.Count(); i++)
+                    {
+                        for (var j = i+1;i <dots.Count(); j++)
+                        {
+                            var current = Math.Pow((dots[i].Item1 - dots[j].Item1), 2) + Math.Pow((dots[i].Item2 - dots[j].Item2), 2);
+                            if (current > diagonal)
+                            {
+                                diagonal = current;
+                                dot1 = dots[i];
+                                dot2 = dots[j];
+                            }
+                        }
+                    }
+
+                    centerPoint[0] = (dot1.Item1 + dot1.Item1) / 2;
+                    centerPoint[1] = (dot2.Item2 + dot2.Item2) / 2;
+                    width = Math.Abs(dot1.Item1 - dot2.Item1);
+                    height = Math.Abs(dot1.Item2 - dot2.Item2);
                     
-
-                    Debug.Log(posX);
-                    Debug.Log(posZ);
-
-                    this.transform.position = new Vector3(posX, 0, posZ);
+                    this.transform.position = new Vector3(centerPoint[0], 0, centerPoint[1]);
                     meshRenderer.enabled = true;
                 }
                 else
