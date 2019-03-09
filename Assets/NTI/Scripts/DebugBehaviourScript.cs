@@ -7,7 +7,6 @@ using System;
 using System.Collections.Concurrent;
 using System.Linq;
 using System.Security.Policy;
-using UnityEditor.IMGUI.Controls;
 
 namespace NTI.Scripts
 {
@@ -37,7 +36,7 @@ namespace NTI.Scripts
         void Update()
         {
             frameCounter++;
-            if (frameCounter % 10 == 0)
+            if (frameCounter % 5 == 0)
             {
                 for (var i = 0; i < 4; i++)
                 {
@@ -65,11 +64,11 @@ namespace NTI.Scripts
                     }
 
                     double diagonal = 0;
-                    Tuple<float, float> dot1;
-                    Tuple<float, float> dot2;
+                    Tuple<float, float> dot1 = new Tuple<float, float>(0, 0);
+                    Tuple<float, float> dot2 = new Tuple<float, float>(0, 0);
                     for (var i = 0; i < dots.Count(); i++)
                     {
-                        for (var j = i+1;i <dots.Count(); j++)
+                        for (var j = i+1;j <dots.Count(); j++)
                         {
                             var current = Math.Pow((dots[i].Item1 - dots[j].Item1), 2) + Math.Pow((dots[i].Item2 - dots[j].Item2), 2);
                             if (current > diagonal)
@@ -87,6 +86,7 @@ namespace NTI.Scripts
                     height = Math.Abs(dot1.Item2 - dot2.Item2);
                     
                     this.transform.position = new Vector3(centerPoint[0], 0, centerPoint[1]);
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
                     meshRenderer.enabled = true;
                 }
                 else
