@@ -54,39 +54,27 @@ namespace NTI.Scripts
 
                 if (_setupBehaviour.targets.Count >= 3)
                 {
+                    List<float> XValues = new List<float>();
+                    List<float> ZValues = new List<float>();
+                    
                     foreach (var tracker in trackers)
                     {
                         if (!(tracker == null))
                         {
                             Vector3 current = tracker.position;
-                            dots.Add(new Tuple<float, float>(current.x, current.z));
+                            XValues.Add(current.x);
+                            ZValues.Add(current.z);
+                            
                         }
                     }
 
-                    double diagonal = 0;
-                    Tuple<float, float> dot1 = new Tuple<float, float>(0, 0);
-                    Tuple<float, float> dot2 = new Tuple<float, float>(0, 0);
-                    for (var i = 0; i < dots.Count(); i++)
-                    {
-                        for (var j = i+1;j <dots.Count(); j++)
-                        {
-                            var current = Math.Pow((dots[i].Item1 - dots[j].Item1), 2) + Math.Pow((dots[i].Item2 - dots[j].Item2), 2);
-                            if (current > diagonal)
-                            {
-                                diagonal = current;
-                                dot1 = dots[i];
-                                dot2 = dots[j];
-                            }
-                        }
-                    }
+                    width = XValues.Max() - XValues.Min();
+                    height = ZValues.Max() - ZValues.Min();
 
-                    centerPoint[0] = (dot1.Item1 + dot1.Item1) / 2;
-                    centerPoint[1] = (dot2.Item2 + dot2.Item2) / 2;
-                    width = Math.Abs(dot1.Item1 - dot2.Item1);
-                    height = Math.Abs(dot1.Item2 - dot2.Item2);
-                    
-                    this.transform.position = new Vector3(centerPoint[0], 0, centerPoint[1]);
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    var currentSize = meshRenderer.bounds.size;
+                    var scaleFactor = height / currentSize.x;
+                    this.transform.localScale= new Vector3(scaleFactor, scaleFactor, scaleFactor );
+                    transform.position = new Vector3(-width/2, 0, -height/2);
                     meshRenderer.enabled = true;
                 }
                 else
