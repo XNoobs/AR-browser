@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27002edd-60d5-4653-8a97-adf6de03bea0" name="Default Changelist" comment="Decreased updating frequency">
+    <list default="true" id="27002edd-60d5-4653-8a97-adf6de03bea0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AR-app/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs" afterDir="false" />
     </list>
@@ -16,22 +16,22 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+            <state relative-caret-position="529">
+              <caret line="78" column="48" lean-forward="true" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
               <folding>
-                <marker date="1552129702601" expanded="true" signature="6:157" ph="..." />
-                <marker date="1552129702601" expanded="true" signature="199:2557" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="255:2555" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="838:1072" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1138:2549" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1216:2539" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1274:1605" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1316:1459" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1499:1587" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1744:2367" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1816:2109" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="1886:2087" ph="{...}" />
-                <marker date="1552129702601" expanded="true" signature="2388:2474" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="6:157" ph="..." />
+                <marker date="1552142753460" expanded="true" signature="263:3043" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="319:3041" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="888:1122" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1188:3035" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1266:3025" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1324:1655" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1366:1509" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1549:1637" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="1794:2853" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="2009:2350" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="2079:2328" ph="{...}" />
+                <marker date="1552142753460" expanded="true" signature="2874:2960" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -50,6 +50,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/NTI/Scenes/NTI.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/ARGlobalSetupBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/AppConfigHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/NTI/Scripts/MapGrid.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,7 +67,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="806" />
+    <option name="x" value="16" />
     <option name="y" value="25" />
     <option name="width" value="778" />
     <option name="height" value="859" />
@@ -192,7 +193,7 @@
       <workItem from="1552054929179" duration="996000" />
       <workItem from="1552062847989" duration="1914000" />
       <workItem from="1552069738700" duration="552000" />
-      <workItem from="1552128679244" duration="1054000" />
+      <workItem from="1552128679244" duration="6570000" />
     </task>
     <task id="LOCAL-00001" summary="Decreased updating frequency">
       <created>1552070283361</created>
@@ -201,11 +202,25 @@
       <option name="project" value="LOCAL" />
       <updated>1552070283361</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working on grid rendering">
+      <created>1552132953000</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1552132953000</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Working on grid rendering">
+      <created>1552136276387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1552136276387</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23046000" />
+    <option name="totallyTimeSpent" value="28562000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -218,6 +233,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="11" y="20" width="1578" height="869" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.07329843" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -257,7 +273,8 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Decreased updating frequency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Decreased updating frequency" />
+    <MESSAGE value="Working on grid rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on grid rendering" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -334,22 +351,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/NTI/Scripts/DebugBehaviourScript.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+        <state relative-caret-position="529">
+          <caret line="78" column="48" lean-forward="true" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
           <folding>
-            <marker date="1552129702601" expanded="true" signature="6:157" ph="..." />
-            <marker date="1552129702601" expanded="true" signature="199:2557" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="255:2555" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="838:1072" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1138:2549" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1216:2539" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1274:1605" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1316:1459" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1499:1587" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1744:2367" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1816:2109" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="1886:2087" ph="{...}" />
-            <marker date="1552129702601" expanded="true" signature="2388:2474" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="6:157" ph="..." />
+            <marker date="1552142753460" expanded="true" signature="263:3043" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="319:3041" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="888:1122" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1188:3035" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1266:3025" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1324:1655" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1366:1509" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1549:1637" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="1794:2853" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="2009:2350" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="2079:2328" ph="{...}" />
+            <marker date="1552142753460" expanded="true" signature="2874:2960" ph="{...}" />
           </folding>
         </state>
       </provider>
