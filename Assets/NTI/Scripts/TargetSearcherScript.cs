@@ -6,20 +6,22 @@ using System.Collections.Generic;
 
 namespace NTI.Scripts
 {
-    public class DebugBehaviourScript : MonoBehaviour
+    public class TargetSearcherScript : MonoBehaviour
     {
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer _meshRenderer;
-        private float _height;
-        private float _width;        
+        public Vector3 CenterPosition;
+        public float Height;
+        public float Width;
+        [SerializeField] private Canvas canvas;
     
     
         // Start is called before the first frame update
         private void Start()
         {
             _setupBehaviour = GameObject.Find("EasyAR_Startup").GetComponent<ARGlobalSetupBehaviour>();
-            _meshRenderer = gameObject.GetComponent<MeshRenderer>();
-            _meshRenderer.enabled = false;
+            //canvas = gameObject.Find<MeshRenderer>();
+            canvas.enabled = false;
             
             InvokeRepeating(nameof(SetupMap), 1f, 5f);
         }
@@ -28,7 +30,7 @@ namespace NTI.Scripts
         {
             if (_setupBehaviour.Targets.Count >= 3)
             {
-                _meshRenderer.enabled = true;
+                canvas.enabled = true;
                 
                 var xValues = new List<float>();
                 var zValues = new List<float>();
@@ -43,17 +45,19 @@ namespace NTI.Scripts
                     zValues.Add(targetsTransform.Value.position.z);
                 }
                 
-                _width = xValues.Max() - xValues.Min();
-                _height = zValues.Max() - zValues.Min();
+                Width = xValues.Max() - xValues.Min();
+                Height = zValues.Max() - zValues.Min();
                 
-                transform.position = new Vector3(xValues.Min() + _width / 2, 0, zValues.Min() + _height / 2);
-                transform.rotation = Quaternion.identity;
+                CenterPosition = new Vector3(xValues.Min() + Width / 2, 0, zValues.Min() + Height / 2);
+
+                transform.position = CenterPosition;
+                transform.rotation = Quaternion.Euler(90,0,90);
                 
                 Debug.Log("------------- END -------------");
             }
             else
             {
-                _meshRenderer.enabled = false;
+                canvas.enabled = false;
             }
             Debug.Log(">>>>>>>>>> " + _setupBehaviour.Targets.Count);
         }

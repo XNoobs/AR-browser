@@ -3,25 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using NTI.Scripts;
 
 public class AppConfigHandler : MonoBehaviour
 {
     // Start is called before the first frame update
+    private TargetSearcherScript targetSearcher;
+    
     private InputField _inputHeight;
     private InputField _inputWidth;
-    private InputField _inputSquareSize;
     public float movementX;
     public float movementZ;
-    public uint height=10;
-    public uint width=10;
-    public uint padding=6;
+    public uint height = 10;
+    public uint width = 10;
+    public uint padding = 6;
     
     void Start()
     {
+        var canvas = GameObject.Find("Canvas");
+        targetSearcher = canvas.GetComponent<TargetSearcherScript>();
+        
+        
         _inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
         _inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
-        _inputSquareSize = GameObject.Find("squareSize").GetComponent<InputField>();
     }
 
     // Update is called once per frame
@@ -33,17 +39,15 @@ public class AppConfigHandler : MonoBehaviour
         
         UInt32.TryParse(_inputHeight.text, out currentHeight);
         UInt32.TryParse(_inputWidth.text, out currentWidth);
-        UInt32.TryParse(_inputSquareSize.text, out currentPadding);
-        currentPadding += 1; //padding 1 pixel bigger than square size
-        if (currentHeight != height || currentWidth != width || currentPadding != padding)
+        if (currentHeight != height || currentWidth != width)
         {
             height = currentHeight;
             width = currentWidth;
-            padding = currentPadding;
             
             if (height % 2 == 0)
             {
                 movementX = Convert.ToSingle((height / 2 - 0.5) * padding);
+                
             }
             else
             {
@@ -57,9 +61,11 @@ public class AppConfigHandler : MonoBehaviour
             else
             {
                 movementZ = width / 2 * padding;
-            }  
+            }
+
+            movementX += targetSearcher.Height;
+            movementZ += targetSearcher.Width;
         }
-        
         
     }
 }

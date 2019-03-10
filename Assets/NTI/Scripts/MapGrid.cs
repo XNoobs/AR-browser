@@ -23,27 +23,11 @@ namespace NTI.Scripts
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
         [SerializeField] private GameObject objectToPlace;
-        [SerializeField] private GameObject _imageTrackerContainer;
-        private ImageTrackerBehaviour _imageTracker;
-        private UnityAction _unityAction;
         private GameObject[,] _grid;
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
-        private Frame frame;
 
-
-
-        private void CreateMenuButton()
-        {
-
-            square.transform.localScale = new Vector3(5, 5, 0);
-            var position = new Vector3(0, 0, 0);
-            menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
-            menuBtn.transform.SetParent(this.transform);
-            var menuBtnBoxCollider = menuBtn.AddComponent<BoxCollider>();
-            menuBtnBoxCollider.name = "menu";
-        }
 
         private static async Task Fetch()
         {
@@ -100,24 +84,6 @@ namespace NTI.Scripts
             return System.Convert.ToBase64String(plainTextBytes);
         }
 
-
-        private void DrawMenuButton(bool UIOn)
-        {
-            var buttonPos = 0f;
-            if (UIOn)
-            {
-                buttonPos = -28;
-            }
-            else
-            {
-                buttonPos = -(_configHandler.width / 2 + 1) * _configHandler.padding;
-            }
-
-            var position = new Vector3(0, 0, buttonPos);
-            menuBtn.transform.position = position;
-            menuBtn.SetActive(true);
-        }
-
         private void DrawGrid()
         {
             square.transform.localScale = new Vector3(_configHandler.padding-1, _configHandler.padding-1, 0);
@@ -172,13 +138,6 @@ namespace NTI.Scripts
             square.transform.localScale = new Vector3(5, 5, 0);
             userInterface.enabled = true;
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
-            CreateMenuButton();
-            DrawMenuButton(true);
-
-            var fetchFiles = new Timer(async (e) => { await Fetch(); }, null, 5, 5);
-
-            _imageTracker = _imageTrackerContainer.GetComponent<ImageTrackerBehaviour>();
-            _imageTracker.TargetLoad += test;
         }
 
         void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)
@@ -217,21 +176,6 @@ namespace NTI.Scripts
                                 Destroy(cellHitted);
                             }
 
-                        }
-                    }
-                    if (raycastHit.collider.name == "menu")
-                    {
-                        if (userInterface.enabled == false)
-                        {
-                            DeleteGrid();
-                            userInterface.enabled = true;
-                            DrawMenuButton(true);
-                        }
-                        else
-                        {
-                            userInterface.enabled = false;
-                            DrawGrid();
-                            DrawMenuButton(false);
                         }
                     }
                 }
