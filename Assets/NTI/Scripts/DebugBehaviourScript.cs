@@ -11,7 +11,8 @@ namespace NTI.Scripts
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer _meshRenderer;
         private float _height;
-        private float _width;        
+        private float _width;
+        public Vector3 CenterCoordinates;
     
     
         // Start is called before the first frame update
@@ -46,7 +47,9 @@ namespace NTI.Scripts
                 _width = xValues.Max() - xValues.Min();
                 _height = zValues.Max() - zValues.Min();
                 
-                transform.position = new Vector3(xValues.Min() + _width / 2, 0, zValues.Min() + _height / 2);
+                CenterCoordinates = new Vector3(xValues.Min() + _width / 2, 0, zValues.Min() + _height / 2);
+                transform.position = CenterCoordinates;
+                
                 transform.rotation = Quaternion.identity;
                 
                 Debug.Log("------------- END -------------");
