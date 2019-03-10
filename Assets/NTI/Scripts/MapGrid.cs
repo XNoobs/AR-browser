@@ -23,16 +23,11 @@ namespace NTI.Scripts
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
         [SerializeField] private GameObject objectToPlace;
-        [SerializeField] private GameObject _imageTrackerContainer;
-        private ImageTrackerBehaviour _imageTracker;
-        private UnityAction _unityAction;
         private GameObject[,] _grid;
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
-        private Frame frame;
-
-
+        
 
         private void CreateMenuButton()
         {
@@ -82,7 +77,7 @@ namespace NTI.Scripts
                     }
                     else
                     {
-                        Console.WriteLine("GAVNO");
+                        Console.WriteLine("Smert");
                     }
 
                 }
@@ -175,10 +170,7 @@ namespace NTI.Scripts
             CreateMenuButton();
             DrawMenuButton(true);
 
-            var fetchFiles = new Timer(async (e) => { await Fetch(); }, null, 5, 5);
-
-            _imageTracker = _imageTrackerContainer.GetComponent<ImageTrackerBehaviour>();
-            _imageTracker.TargetLoad += test;
+            //var fetchFiles = new Timer(async (e) => { await Fetch(); }, null, 5, 5);
         }
 
         void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)

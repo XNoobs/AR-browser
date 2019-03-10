@@ -2,11 +2,12 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 
 namespace NTI.Scripts
 {
-    public class DebugBehaviourScript : MonoBehaviour
+    public class TargetSearcher : MonoBehaviour
     {
         private ARGlobalSetupBehaviour _setupBehaviour;
         private MeshRenderer _meshRenderer;
