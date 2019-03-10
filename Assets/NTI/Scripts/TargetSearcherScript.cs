@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 namespace NTI.Scripts
@@ -13,7 +14,10 @@ namespace NTI.Scripts
         public Vector3 CenterPosition;
         public float Height;
         public float Width;
+
+        [SerializeField] private Button menuButton;
         [SerializeField] private Canvas canvas;
+        private MapGrid _gridScript;
     
     
         // Start is called before the first frame update
@@ -24,8 +28,17 @@ namespace NTI.Scripts
             canvas.enabled = false;
             
             InvokeRepeating(nameof(SetupMap), 1f, 5f);
+            _gridScript = GameObject.Find("Grid").GetComponent<MapGrid>();
+            menuButton.onClick.AddListener(EnableGrid);
         }
 
+        private void EnableGrid()
+        {
+            _gridScript.DrawGrid();
+            canvas.enabled = false;
+            Debug.Log("Menu button pressed");
+        }
+        
         private void SetupMap()
         {
             if (_setupBehaviour.Targets.Count >= 3)
