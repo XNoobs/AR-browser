@@ -1,26 +1,42 @@
-﻿using UnityEditor;
-using UnityEngine;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+using Newtonsoft.Json;
 using System;
-using UnityEngine.Experimental.UIElements;
-using UnityEngine.UI;
+using System.IO;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using EasyAR;
+// using Eas
+
 
 namespace NTI.Scripts
 {
+
+    // public class CustomImageTracker : 
+
+
     public class MapGrid : MonoBehaviour
     {
         [SerializeField] private GameObject square;
         [SerializeField] private Canvas userInterface;
         [SerializeField] private GameObject objectToPlace;
+        [SerializeField] private GameObject _imageTrackerContainer;
+        private ImageTrackerBehaviour _imageTracker;
+        private UnityAction _unityAction;
         private GameObject[,] _grid;
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
+        private Frame frame;
+
 
 
         private void CreateMenuButton()
         {
+
             square.transform.localScale = new Vector3(5, 5, 0);
             var position = new Vector3(0, 0, 0);
             menuBtn = Instantiate(square, position, Quaternion.Euler(90f, 0f, 0f)) as GameObject;
@@ -29,7 +45,62 @@ namespace NTI.Scripts
             menuBtnBoxCollider.name = "menu";
         }
 
-      
+        private static async Task Fetch()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    HttpResponseMessage response = await client.GetAsync("http://192.168.43.238/ar/status/5");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    // if responseBody == "\"{}\\n\"" => all files are up-to-date
+                    // ToDo: create success response
+
+                    if (responseBody != "\"{}\\n\"")
+                    {
+                        Dictionary<int, string[]> dict = JsonConvert.DeserializeObject<Dictionary<int, string[]>>(responseBody);
+                        Console.WriteLine(new string('-', 20));
+                        Console.WriteLine(dict);
+                        Console.WriteLine(dict.ToString());
+
+                        for (int i = 0; i < dict.Count; i++)
+                        {
+                            File.WriteAllText(String.Format(@"C:\Users\Skufler\source\repos\HttpClientTest\HttpClientTest\map__{0}.obj", i), dict[i][0]);
+                            File.WriteAllText(String.Format(@"C:\Users\Skufler\source\repos\HttpClientTest\HttpClientTest\map__{0}.mtl", i), dict[i][1]);
+                            try
+                            {
+                                var x = Base64Encode(dict[i][2]).Remove(0, 2);
+                                x = x.Remove(x.Length - 1);
+                                File.WriteAllText(String.Format(@"C:\Users\Skufler\source\repos\HttpClientTest\HttpClientTest\map__{0}.jpg", i), x);
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("GAVNO");
+                    }
+
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("\nException Caught!");
+                    Console.WriteLine("Message :{0} ", e.Message);
+                }
+            }
+        }
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+
         private void DrawMenuButton(bool UIOn)
         {
             var buttonPos = 0f;
@@ -103,10 +174,23 @@ namespace NTI.Scripts
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
             CreateMenuButton();
             DrawMenuButton(true);
+
+            var fetchFiles = new Timer(async (e) => { await Fetch(); }, null, 5, 5);
+
+            _imageTracker = _imageTrackerContainer.GetComponent<ImageTrackerBehaviour>();
+            _imageTracker.TargetLoad += test;
         }
+
+        void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)
+        {
+            Debug.Log("loaded");
+        }
+
 
         private void Update()
         {
+            
+
             if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);

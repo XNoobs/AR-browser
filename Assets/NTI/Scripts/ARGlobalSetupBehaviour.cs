@@ -6,8 +6,12 @@
 //
 //=============================================================================================================================
 
+using System;
 using UnityEngine;
 using EasyAR;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Sample
 {
@@ -24,6 +28,9 @@ namespace Sample
             + "  3. find the created item in the list and show key\n"
             + "  4. replace all text in TextArea with your key";
 
+        public Dictionary<int, Target> Targets = new Dictionary<int, Target>();        
+        public Dictionary<int, Transform> TargetsTransforms = new Dictionary<int, Transform>();
+        
         private void Awake()
         {
             var EasyARBehaviour = FindObjectOfType<EasyARBehaviour>();
@@ -51,11 +58,23 @@ namespace Sample
         void OnTargetFound(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
             Debug.Log("<Global Handler> Found: " + target.Id);
+            
+            var index = Convert.ToInt32(target.Name[target.Name.Length - 1]);
+            var targetTransform = GameObject.Find(target.Name).GetComponent<Transform>();
+            
+            Targets.Add(index, target);
+            TargetsTransforms.Add(index, targetTransform);
+
         }
 
         void OnTargetLost(ARCameraBaseBehaviour arcameraBehaviour, TargetAbstractBehaviour targetBehaviour, Target target)
         {
             Debug.Log("<Global Handler> Lost: " + target.Id);
+
+            var index = Convert.ToInt32(target.Name[target.Name.Length - 1]); 
+            
+            Targets.Remove(index);
+            TargetsTransforms.Remove(index);
         }
 
         void OnTargetLoad(ImageTrackerBaseBehaviour trackerBehaviour, ImageTargetBaseBehaviour targetBehaviour, Target target, bool status)

@@ -2,8 +2,20 @@
   "images" :
   [
     {
-      "image" : "marker.jpg",
-      "name" : "marker"
+      "image" : "tracker0.jpg",
+      "name" : "tracker0"
+    },
+    {
+      "image" : "tracker1.jpg",
+      "name" : "tracker1"
+    },
+    {
+      "image" : "tracker2.jpg",
+      "name" : "tracker2"
+    },
+    {
+      "image" : "tracker3.jpg",
+      "name" : "tracker3"
     }
   ]
 }
