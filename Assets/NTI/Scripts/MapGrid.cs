@@ -116,20 +116,24 @@ namespace NTI.Scripts
 
         private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
-            var position = new Vector3(coordinates.Item1 *  _configHandler.scaleX + _configHandler.targetSearcher.CenterPosition.x, 0, coordinates.Item2  * _configHandler.scaleZ + _configHandler.targetSearcher.CenterPosition.z);
+            var position = new Vector3(coordinates.Item1 *  _configHandler.squareRenderer.x - _configHandler.movementX, 0, coordinates.Item2  * _configHandler.squareRenderer.z - _configHandler.movementZ);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
+            
             if (vacation)
             {
                 var sizeObj = current.GetComponent<MeshRenderer>().bounds.size;
                 var sizeCell = square.GetComponent<SpriteRenderer>().bounds.size;
                 var maxBound = sizeObj.x > sizeObj.z ? sizeObj.x : sizeObj.z;
                 var scaleFactor = sizeCell.x / maxBound;
+                
                 current.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
             }
+            
             current.transform.SetParent(this.transform);
             var currentBoxCollider = current.AddComponent<BoxCollider>();
-            currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2.ToString();
+            currentBoxCollider.name = coordinates.Item1.ToString() + '_' + coordinates.Item2;
             current.SetActive(true);
+            
             _grid[coordinates.Item1, coordinates.Item2] = current;
             _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
             Debug.Log("Cell placed");
@@ -153,8 +157,6 @@ namespace NTI.Scripts
 
         private void Update()
         {
-            
-
             if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
             {
                 var raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);

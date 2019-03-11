@@ -18,16 +18,17 @@ public class AppConfigHandler : MonoBehaviour
     public float movementZ;
     public uint height = 10;
     public uint width = 10;
-    public uint padding = 1;
+    public uint padding = 3000;
     public Vector3 scale;
     public float scaleX;
     public float scaleZ;
+    public Vector3 squareRenderer;
     
     void Start()
     {
         var canvas = GameObject.Find("Canvas");
         targetSearcher = canvas.GetComponent<TargetSearcherScript>();
-        
+        squareRenderer = square.GetComponent<SpriteRenderer>().bounds.size;
         
         _inputHeight = GameObject.Find("size_x").GetComponent<InputField>();
         _inputWidth = GameObject.Find("size_z").GetComponent<InputField>();
@@ -43,12 +44,16 @@ public class AppConfigHandler : MonoBehaviour
         UInt32.TryParse(_inputWidth.text, out currentWidth);
         height = currentHeight;
         width = currentWidth;
-
-        scaleX = targetSearcher.Width / width / square.transform.localScale.x;
-        scaleZ = targetSearcher.Height / height / square.transform.localScale.y;
         
-        movementX = (targetSearcher.Width + scaleX) / 2;
-        movementZ = (targetSearcher.Height + scaleZ) / 2;
+        scaleX = (targetSearcher.Width / width) / squareRenderer.x;
+        scaleZ = (targetSearcher.Height / height) / squareRenderer.z;
+        
+        Debug.Log("Sqr rndr: x:" + squareRenderer.x + " y: " + squareRenderer.z);
+        Debug.Log("Width " + targetSearcher.Width + " Height " + targetSearcher.Height);
+        
+        movementX = targetSearcher.Width / 2;
+        movementZ = targetSearcher.Height / 2;
+        
         movementX += targetSearcher.CenterPosition.x;
         movementZ += targetSearcher.CenterPosition.z;
         scale = new Vector3(scaleX, 0, scaleZ); 
