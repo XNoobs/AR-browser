@@ -84,7 +84,7 @@ namespace NTI.Scripts
             return System.Convert.ToBase64String(plainTextBytes);
         }
 
-        private void DrawGrid()
+        public void DrawGrid()
         {
             square.transform.localScale = new Vector3(_configHandler.padding-1, _configHandler.padding-1, 0);
 

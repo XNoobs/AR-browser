@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 
 namespace NTI.Scripts
@@ -9,23 +10,30 @@ namespace NTI.Scripts
     public class TargetSearcherScript : MonoBehaviour
     {
         private ARGlobalSetupBehaviour _setupBehaviour;
-        private MeshRenderer _meshRenderer;
         public Vector3 CenterPosition;
         public float Height;
         public float Width;
         [SerializeField] private Canvas canvas;
-    
+        [SerializeField] private Button menuButton;
+        private MapGrid _gridHandler;
     
         // Start is called before the first frame update
         private void Start()
         {
             _setupBehaviour = GameObject.Find("EasyAR_Startup").GetComponent<ARGlobalSetupBehaviour>();
-            //canvas = gameObject.Find<MeshRenderer>();
-            canvas.enabled = false;
+            canvas.enabled = true;
+            _gridHandler = GameObject.Find("Grid").GetComponent<MapGrid>();
             
             InvokeRepeating(nameof(SetupMap), 1f, 5f);
+            menuButton.onClick.AddListener(EnableGrid);
         }
 
+        private void EnableGrid()
+        {
+            canvas.enabled = false;
+            _gridHandler.DrawGrid();
+        }
+        
         private void SetupMap()
         {
             if (_setupBehaviour.Targets.Count >= 3)
