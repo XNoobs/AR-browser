@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace NTI.Scripts
 {
-    public class TargetSearcherScript : MonoBehaviour
+    public class TargetSearcherMap : MonoBehaviour
     {
         private ARGlobalSetupBehaviour _setupBehaviour;
         public Vector3 CenterPosition;
@@ -22,17 +22,17 @@ namespace NTI.Scripts
         private void Start()
         {
             _setupBehaviour = GameObject.Find("EasyAR_Startup").GetComponent<ARGlobalSetupBehaviour>();
-            canvas.enabled = true;
+            canvas.enabled = false;
             _gridHandler = GameObject.Find("Grid").GetComponent<MapGrid>();
             
             InvokeRepeating(nameof(SetupMap), 1f, 5f);
-            menuButton.onClick.AddListener(EnableGrid);
+            menuButton.onClick.AddListener(EnableCanvas);
         }
 
-        private void EnableGrid()
+        private void EnableCanvas()
         {
-            canvas.gameObject.SetActive(false);
-            _gridHandler.DrawGrid();
+            canvas.enabled = true;
+            _gridHandler.DeleteGrid();
         }
         
         private void SetupMap()
@@ -63,10 +63,6 @@ namespace NTI.Scripts
                 transform.rotation = Quaternion.Euler(90,0,90);
                 
                 Debug.Log("------------- END -------------");
-            }
-            else
-            {
-                canvas.enabled = false;
             }
             Debug.Log(">>>>>>>>>> " + _setupBehaviour.Targets.Count);
         }

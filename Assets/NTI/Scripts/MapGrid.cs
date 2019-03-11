@@ -27,6 +27,7 @@ namespace NTI.Scripts
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
+        private TargetSearcherMap _targetMap;
 
 
         private static async Task Fetch()
@@ -86,8 +87,8 @@ namespace NTI.Scripts
 
         public void DrawGrid()
         {
-            square.transform.localScale = new Vector3(_configHandler.padding-1, _configHandler.padding-1, 0);
-
+            square.transform.localScale = new Vector3(_configHandler.scale.x, _configHandler.scale.z, 5);
+            this.transform.position = _targetMap.CenterPosition;
             _grid = new GameObject[_configHandler.height, _configHandler.width];
             _cellsVacated = new bool[_configHandler.height, _configHandler.width];
 
@@ -95,12 +96,14 @@ namespace NTI.Scripts
             {
                 for (var j = 0; j < _configHandler.width; j++)
                 {
-                    PlaceObject(square, new Tuple<int, int>(i, j), Quaternion.Euler(90f,0f,0f), false);
+                    PlaceObject(square, new Tuple<int, int>(i, j), Quaternion.Euler(90f, 0f, 0f), false);
                 }
             }
+
+            Debug.Log("Grid created");
         }
 
-        private void DeleteGrid()
+        public void DeleteGrid()
         {
             for (var i = 0; i < _configHandler.height; i++)
             {
@@ -113,9 +116,9 @@ namespace NTI.Scripts
 
         private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
-            var position = new Vector3(coordinates.Item1 * _configHandler.padding - _configHandler.movementX, 0, coordinates.Item2 * _configHandler.padding - _configHandler.movementZ);
+            var position = new Vector3(coordinates.Item1 *  _configHandler.scaleX + _configHandler.targetSearcher.CenterPosition.x, 0, coordinates.Item2  * _configHandler.scaleZ + _configHandler.targetSearcher.CenterPosition.z);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
-            if (vacation == true)
+            if (vacation)
             {
                 var sizeObj = current.GetComponent<MeshRenderer>().bounds.size;
                 var sizeCell = square.GetComponent<SpriteRenderer>().bounds.size;
@@ -129,6 +132,7 @@ namespace NTI.Scripts
             current.SetActive(true);
             _grid[coordinates.Item1, coordinates.Item2] = current;
             _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
+            Debug.Log("Cell placed");
         }
         
 
@@ -138,6 +142,7 @@ namespace NTI.Scripts
             square.transform.localScale = new Vector3(5, 5, 0);
             userInterface.enabled = true;
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
+            _targetMap = this.gameObject.GetComponent<TargetSearcherMap>();
         }
 
         void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)

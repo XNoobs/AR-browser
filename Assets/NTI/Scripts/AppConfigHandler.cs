@@ -10,15 +10,18 @@ using NTI.Scripts;
 public class AppConfigHandler : MonoBehaviour
 {
     // Start is called before the first frame update
-    private TargetSearcherScript targetSearcher;
-    
+    public TargetSearcherScript targetSearcher;
+    [SerializeField] private GameObject square;
     private InputField _inputHeight;
     private InputField _inputWidth;
     public float movementX;
     public float movementZ;
     public uint height = 10;
     public uint width = 10;
-    public uint padding = 6;
+    public uint padding = 1;
+    public Vector3 scale;
+    public float scaleX;
+    public float scaleZ;
     
     void Start()
     {
@@ -35,37 +38,19 @@ public class AppConfigHandler : MonoBehaviour
     {
         uint currentHeight;
         uint currentWidth;
-        uint currentPadding;
         
         UInt32.TryParse(_inputHeight.text, out currentHeight);
         UInt32.TryParse(_inputWidth.text, out currentWidth);
-        if (currentHeight != height || currentWidth != width)
-        {
-            height = currentHeight;
-            width = currentWidth;
-            
-            if (height % 2 == 0)
-            {
-                movementX = Convert.ToSingle((height / 2 - 0.5) * padding);
-                
-            }
-            else
-            {
-                movementX = height / 2 * padding;
-            }
+        height = currentHeight;
+        width = currentWidth;
 
-            if (width % 2 == 0)
-            {
-                movementZ = Convert.ToSingle((width / 2 - 0.5) * padding);
-            }
-            else
-            {
-                movementZ = width / 2 * padding;
-            }
-
-            movementX += targetSearcher.Height;
-            movementZ += targetSearcher.Width;
-        }
+        scaleX = targetSearcher.Width / width / square.transform.localScale.x;
+        scaleZ = targetSearcher.Height / height / square.transform.localScale.y;
         
+        movementX = (targetSearcher.Width + scaleX) / 2;
+        movementZ = (targetSearcher.Height + scaleZ) / 2;
+        movementX += targetSearcher.CenterPosition.x;
+        movementZ += targetSearcher.CenterPosition.z;
+        scale = new Vector3(scaleX, 0, scaleZ); 
     }
 }
