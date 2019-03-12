@@ -87,7 +87,8 @@ namespace NTI.Scripts
 
         public void DrawGrid()
         {
-            square.transform.localScale = new Vector3(_configHandler.scale.x, _configHandler.scale.z, 0);
+            //square.transform.localScale = new Vector3(_configHandler.scale.x, _configHandler.scale.z, 0);
+            var scale = square.transform.localScale;
             this.transform.position = targetSearcher.CenterPosition;
             _grid = new GameObject[_configHandler.height, _configHandler.width];
             _cellsVacated = new bool[_configHandler.height, _configHandler.width];
@@ -136,7 +137,6 @@ namespace NTI.Scripts
             
             _grid[coordinates.Item1, coordinates.Item2] = current;
             _cellsVacated[coordinates.Item1, coordinates.Item2] = vacation;
-            Debug.Log("Cell placed");
         }
         
 

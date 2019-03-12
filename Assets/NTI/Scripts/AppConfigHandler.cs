@@ -46,8 +46,9 @@ public class AppConfigHandler : MonoBehaviour
         scaleX = (targetSearcher.Width / width) / squareRenderer.x;
         scaleZ = (targetSearcher.Height / height) / squareRenderer.z;
 
-        movementX = targetSearcher.CenterPosition.x - targetSearcher.Width / 2;
-        movementZ = targetSearcher.CenterPosition.z - targetSearcher.Height / 2;
-        scale = new Vector3(scaleX, 0, scaleZ); 
+        movementX = targetSearcher.CenterPosition.x - targetSearcher.Width/2 + targetSearcher.Width/width;
+        movementZ = targetSearcher.CenterPosition.z - targetSearcher.Height/2 + targetSearcher.Height/height;
+        scale = new Vector3(scaleX, scaleZ, 0);
+        square.transform.localScale = scale;
     }
 }
