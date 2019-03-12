@@ -18,7 +18,6 @@ public class AppConfigHandler : MonoBehaviour
     public float movementZ;
     public uint height = 10;
     public uint width = 10;
-    public uint padding = 3000;
     public Vector3 scale;
     public float scaleX;
     public float scaleZ;
@@ -48,14 +47,10 @@ public class AppConfigHandler : MonoBehaviour
         scaleX = (targetSearcher.Width / width) / squareRenderer.x;
         scaleZ = (targetSearcher.Height / height) / squareRenderer.z;
         
-        Debug.Log("Sqr rndr: x:" + squareRenderer.x + " y: " + squareRenderer.z);
         Debug.Log("Width " + targetSearcher.Width + " Height " + targetSearcher.Height);
         
-        movementX = targetSearcher.Width / 2;
-        movementZ = targetSearcher.Height / 2;
-        
-        movementX += targetSearcher.CenterPosition.x;
-        movementZ += targetSearcher.CenterPosition.z;
+        movementX = targetSearcher.CenterPosition.x - targetSearcher.Width / 2;
+        movementZ = targetSearcher.CenterPosition.z - targetSearcher.Height / 2;
         scale = new Vector3(scaleX, 0, scaleZ); 
     }
 }

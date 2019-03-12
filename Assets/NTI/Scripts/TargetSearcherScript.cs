@@ -13,6 +13,7 @@ namespace NTI.Scripts
         public Vector3 CenterPosition;
         public float Height;
         public float Width;
+        private bool _canvasState = true; 
 
         [SerializeField] private Button menuButton;
         [SerializeField] private Canvas canvas;
@@ -22,7 +23,6 @@ namespace NTI.Scripts
         private void Start()
         {
             _setupBehaviour = GameObject.Find("EasyAR_Startup").GetComponent<ARGlobalSetupBehaviour>();
-            canvas.enabled = true;
             _gridHandler = GameObject.Find("Grid").GetComponent<MapGrid>();
             
             InvokeRepeating(nameof(SetupMap), 1f, 5f);
@@ -31,7 +31,8 @@ namespace NTI.Scripts
 
         private void EnableGrid()
         {
-            canvas.gameObject.SetActive(false);
+            canvas.enabled = false;
+            _canvasState = false;
             _gridHandler.DrawGrid();
         }
         
@@ -39,8 +40,11 @@ namespace NTI.Scripts
         {
             if (_setupBehaviour.Targets.Count >= 3)
             {
-                canvas.enabled = true;
-                
+                if (_canvasState)
+                {
+                    canvas.enabled = true;
+                }
+
                 var xValues = new List<float>();
                 var zValues = new List<float>();
                 

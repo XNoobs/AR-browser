@@ -27,7 +27,7 @@ namespace NTI.Scripts
         private bool[,] _cellsVacated;
         private GameObject menuBtn;
         private AppConfigHandler _configHandler;
-        private TargetSearcherMap _targetMap;
+        private TargetSearcherScript targetSearcher;
 
 
         private static async Task Fetch()
@@ -88,7 +88,7 @@ namespace NTI.Scripts
         public void DrawGrid()
         {
             square.transform.localScale = new Vector3(_configHandler.scale.x, _configHandler.scale.z, 5);
-            this.transform.position = _targetMap.CenterPosition;
+            this.transform.position = targetSearcher.CenterPosition;
             _grid = new GameObject[_configHandler.height, _configHandler.width];
             _cellsVacated = new bool[_configHandler.height, _configHandler.width];
 
@@ -116,7 +116,7 @@ namespace NTI.Scripts
 
         private void PlaceObject(GameObject objectToPlace, Tuple<int, int> coordinates, Quaternion rotation, bool vacation)
         {
-            var position = new Vector3(coordinates.Item1 *  _configHandler.squareRenderer.x - _configHandler.movementX, 0, coordinates.Item2  * _configHandler.squareRenderer.z - _configHandler.movementZ);
+            var position = new Vector3(coordinates.Item1 *  _configHandler.squareRenderer.x + _configHandler.movementX, 0, coordinates.Item2  * _configHandler.squareRenderer.z + _configHandler.movementZ);
             var current = Instantiate(objectToPlace, position, rotation) as GameObject;
             
             if (vacation)
@@ -146,14 +146,8 @@ namespace NTI.Scripts
             square.transform.localScale = new Vector3(5, 5, 0);
             userInterface.enabled = true;
             var squareSize = square.GetComponent<SpriteRenderer>().bounds.size;
-            _targetMap = this.gameObject.GetComponent<TargetSearcherMap>();
+            targetSearcher = GameObject.Find("Canvas").GetComponent<TargetSearcherScript>();
         }
-
-        void test(ImageTrackerBaseBehaviour imageTrackerBaseBehaviour, ImageTargetBaseBehaviour imageTargetBaseBehaviour, Target target, bool flag)
-        {
-            Debug.Log("loaded");
-        }
-
 
         private void Update()
         {
