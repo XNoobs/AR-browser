@@ -16,8 +16,8 @@ public class AppConfigHandler : MonoBehaviour
     private InputField _inputWidth;
     public float movementX;
     public float movementZ;
-    public uint height = 10;
-    public uint width = 10;
+    public uint height = 4;
+    public uint width = 4;
     public Vector3 scale;
     public float scaleX;
     public float scaleZ;
@@ -36,19 +36,16 @@ public class AppConfigHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        uint currentHeight;
-        uint currentWidth;
+        uint currentHeight=4;
+        uint currentWidth=4;
         
         UInt32.TryParse(_inputHeight.text, out currentHeight);
         UInt32.TryParse(_inputWidth.text, out currentWidth);
         height = currentHeight;
         width = currentWidth;
-        
         scaleX = (targetSearcher.Width / width) / squareRenderer.x;
         scaleZ = (targetSearcher.Height / height) / squareRenderer.z;
-        
-        Debug.Log("Width " + targetSearcher.Width + " Height " + targetSearcher.Height);
-        
+
         movementX = targetSearcher.CenterPosition.x - targetSearcher.Width / 2;
         movementZ = targetSearcher.CenterPosition.z - targetSearcher.Height / 2;
         scale = new Vector3(scaleX, 0, scaleZ); 
